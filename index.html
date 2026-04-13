@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Fun Facts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .fact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            line-height: 1.6;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .fact-counter {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Fun Facts</h1>
+        <div class="fact-box" id="factBox">
+            Click the button to see a fun fact!
+        </div>
+        <button onclick="showRandomFact()">Get Random Fact</button>
+        <div class="fact-counter" id="counter"></div>
+    </div>
+
+    <script>
+        const facts = [
+            "Honey never spoils. Archaeologists have found 3,000-year-old honey in Egyptian tombs that was still edible!",
+            "A group of flamingos is called a 'flamboyance'.",
+            "Octopuses have three hearts: two pump blood to the gills, and one pumps it to the rest of the body.",
+            "Bananas are berries, but strawberries are not!",
+            "A day on Venus is longer than a year on Venus.",
+            "Cats have over 20 different vocal sounds.",
+            "The Great Wall of China isn't visible from space with the naked eye.",
+            "Cleopatra lived closer to the invention of the iPhone than to the building of the Great Pyramid.",
+            "Sharks have been around longer than dinosaurs.",
+            "A group of crows is called a 'murder'.",
+            "Penguins propose to their mates with a pebble.",
+            "Wombats have cube-shaped poop!",
+            "Sloths only defecate once a week.",
+            "An adult human has 206 bones, but a baby is born with about 300.",
+            "Butterflies taste with their feet.",
+            "The fingerprints of koalas are so similar to humans that they could confuse crime scene investigators.",
+            "Polar bears have black skin under their white fur.",
+            "Ants don't have ears; they hear by feeling vibrations through the ground.",
+            "A group of otters is called a 'romp'.",
+            "The shortest war in history lasted only 38 to 45 minutes.",
+            "Snakes can see through their eyelids.",
+            "Giraffe tongues can be up to 20 inches long.",
+            "Seahorses are the only animals where the male gets pregnant.",
+            "A narwhal's tusk is actually a tooth with about 10 million nerve endings.",
+            "Dolphins have names for each other."
+        ];
+
+        let factCount = 0;
+
+        function showRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factBox = document.getElementById('factBox');
+            
+            factBox.style.animation = 'none';
+            setTimeout(() => {
+                factBox.style.animation = 'fadeIn 0.5s ease-in';
+                factBox.textContent = facts[randomIndex];
+                factCount++;
+                document.getElementById('counter').textContent = `Facts seen: ${factCount}`;
+            }, 10);
+        }
+
+        // Show a fact on page load
+        window.addEventListener('load', showRandomFact);
+    </script>
+</body>
+</html>
